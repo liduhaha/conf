@@ -8,17 +8,20 @@
     font-display: swap;
 }
 
-/* Black (900) */
 @font-face {
     font-family: 'TT Hoves';
-    src: url('../public/fonts/font/TTHoves-Black.woff2') format('woff2'),
-    url('../public/fonts/font/TTHoves-Black.woff')  format('woff'),
-    url('../public/fonts/font/TTHoves-Black.ttf')   format('truetype');
-    font-weight: 900;
+    src: url('../public/fonts/font/TTHoves-Bold.woff2') format('woff2'),
+    url('../public/fonts/font/TTHoves-Bold.woff')  format('woff'),
+    url('../public/fonts/font/TTHoves-Bold.ttf')   format('truetype');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
+
+.txt-bold{
+    font-weight: bold;
+}
 
 html, body {
     margin: 0;
