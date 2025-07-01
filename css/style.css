@@ -1,11 +1,22 @@
-/* Підключення Regular-варіанту */
 @font-face {
     font-family: 'TT Hoves';
-    src: url('public/fonts/font/TTHoves-Black.woff2') format('woff2'),
-    url('public/fonts/font/TTHoves-Black.woff') format('woff');
-    font-weight: 400;         /* нормальна товщина */
+    src: url('../public/fonts/font/TTHoves-Regular.woff2') format('woff2'),
+    url('../public/fonts/font/TTHoves-Regular.woff')  format('woff'),
+    url('../public/fonts/font/TTHoves-Regular.ttf')   format('truetype');
+    font-weight: 400;
     font-style: normal;
-    font-display: swap;       /* щоб текст відразу показувався системним шрифтом, а потім мінявся */
+    font-display: swap;
+}
+
+/* Black (900) */
+@font-face {
+    font-family: 'TT Hoves';
+    src: url('../public/fonts/font/TTHoves-Black.woff2') format('woff2'),
+    url('../public/fonts/font/TTHoves-Black.woff')  format('woff'),
+    url('../public/fonts/font/TTHoves-Black.ttf')   format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 
@@ -13,7 +24,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'TT Hoves', serif;
+    font-family: 'TT Hoves';
     background-color: black;
 }
 
@@ -79,7 +90,7 @@ html, body {
 }
 
 .txt-block-h2 {
-    font-family: 'TT Hoves', serif;
+    font-family: 'TT Hoves';
     font-weight: 400;
     font-size: clamp(2rem, 6vw, 4rem);
     /* початковий 72px -> 4.5rem, тому лінійку можна задати як співвідношення */
@@ -88,7 +99,7 @@ html, body {
 }
 
 .txt-block-h3 {
-    font-family: 'TT Hoves', serif;
+    font-family: 'TT Hoves';
     font-weight: 400;
     line-height: 48px;
     letter-spacing: -0.01em;
@@ -96,7 +107,7 @@ html, body {
 }
 
 .luma-checkout--button {
-    font-family: 'TT Hoves', serif !important;
+    font-family: 'TT Hoves' !important;
     font-weight: 500 !important;
     font-size: 17px !important;
     width: 27vw !important;
