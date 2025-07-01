@@ -1,19 +1,443 @@
-/* Скидання стилів браузера */
-* {
+/* Підключення Regular-варіанту */
+@font-face {
+    font-family: 'TT Hoves';
+    src: url('public/fonts/font/TTHoves-Black.woff2') format('woff2'),
+    url('public/fonts/font/TTHoves-Black.woff') format('woff');
+    font-weight: 400;         /* нормальна товщина */
+    font-style: normal;
+    font-display: swap;       /* щоб текст відразу показувався системним шрифтом, а потім мінявся */
+}
+
+
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: 'TT Hoves', serif;
+    background-color: black;
+}
+
+/* 2. Переконаємося, що сама секція не дає відступів */
+.section-1 {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-1__bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('/public/assets/bckgrnd-1.png') no-repeat center center;
+    /* початковий розмір */
+    background-size: 80% auto;
+    /* запускаємо анімацію */
+    animation: zoomPan 15s ease-out forwards;
+    /* forwards — щоб затриматися на останньому кадрі */
+    /* one iteration (за замовчуванням 1), без infinite */
+}
+
+/* keyframes: від масштабування 1→1.2 і зрушення background-position */
+@keyframes zoomPan {
+    0% {
+        background-size: 70% auto;
+        background-position: center center;
+    }
+    /* з 80% до 100% тримати 120% (нічого не змінювати) */
+    100% {
+        background-size: 90% auto;
+        background-position: center center;
+    }
+}
+
+/* решта ваших стилів */
+.section-block-1 {
+    position: relative; /* щоб контент був над фоном */
+    z-index: 1;
+    margin: 0;
+    padding-left: 35px;      /* відступ зліва */
+    padding-top: 55px;      /* відступ зліва */
+    padding-bottom: 55px;      /* відступ зліва */
+    width: 100%;            /* займає всю ширину батьківського блоку */
+    color: white;
+    display: flex;
+    justify-content: center; /* рівномірно розподіл */
+    gap: 5vh ;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.txt-block-h1 {
+    font-weight: 400;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: clamp(3rem, 8vw, 6rem);
+    letter-spacing: -0.02em;
+}
+
+.txt-block-h2 {
+    font-family: 'TT Hoves', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 6vw, 4rem);
+    /* початковий 72px -> 4.5rem, тому лінійку можна задати як співвідношення */
+    line-height: clamp(2.25rem, 6vw * 1.125, 4.5rem);
+    letter-spacing: -0.02em;
+}
+
+.txt-block-h3 {
+    font-family: 'TT Hoves', serif;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.luma-checkout--button {
+    font-family: 'TT Hoves', serif !important;
+    font-weight: 500 !important;
+    font-size: 17px !important;
+    width: 27vw !important;
+    height: 10vh !important;
+    border-radius: 2px !important;
+    background: #4DF987 !important;
+    color: black !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color .2s ease;
+    line-height: 1.2;
+}
+
+.luma-checkout--button::after {
+    content: '›';
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 100 !important;
+}
+
+.txt-block-h4 {
+    font-family: 'TT Hoves', serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 3.5vw, 1.75rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+
+.section-2 {
+    margin: 0;
+    width: 100vw;            /* займає всю ширину батьківського блоку */
+    display: flex;
+    justify-content: center; /* рівномірно розподіл */
+    gap: 5vh ;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    color: white;
+    padding: 80px;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    background: #f9f9f9;
+.section-2 .list li:hover {
+    background-color: #4DF987 !important; /* замініть на потрібний вам hover-колір */
+    color: #000 !important;               /* чорний текст */
 }
-header {
-    background: #333;
+
+.section-2 .list li {
+    /* ваш штатний фон (можете прибрати, якщо фон задається десь вище) */
+    background-color: initial;
+    color: #fff !important;      /* білий текст */
+    cursor: default !important;  /* дефолтний стрілочний курсор */
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.focus-list li {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* стан «видимий» */
+.focus-list li.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* затримка для порядкової появи */
+.focus-list li:nth-child(1) { transition-delay: 0.0s; }
+.focus-list li:nth-child(2) { transition-delay: 0.2s; }
+.focus-list li:nth-child(3) { transition-delay: 0.4s; }
+.focus-list li:nth-child(4) { transition-delay: 0.6s; }
+.focus-list li:nth-child(5) { transition-delay: 0.8s; }
+
+.txt-block-left {
+    align-self: flex-start;
+}
+
+ol {
+    width: 45vw;
+    list-style: none;
+    margin: 0 auto;
+
+}
+
+ol li {
+    padding: 20px 30px;
+    margin: 10px 0;
+    background-color: rgba(30,99,53,255);
+    color: black;
+    cursor: pointer;
+    position: relative;
+    transition: all .4s;
+    z-index: 10;
+}
+
+ol li::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #4DF987;
+    transition: all .4s;
+    z-index: -1;
+}
+
+ol li:hover::before {
+    width: 100%;
+
+}
+
+/* Контейнер секції */
+.speakers {
+    padding: 4rem 1rem;
+    background: #000;       /* або ваш фон */
     color: #fff;
-    padding: 10px;
+    text-align: center;
+}
+
+
+/* Grid-контейнер */
+.speakers__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* по центру рядки на всіх ширинах */
+    gap: 2rem;
+    width: 80%;      /* або ваші 90% */
+    margin: 0 auto;
+
+}
+
+/* Окрема картка спікера */
+.speaker-card {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.speaker-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+/* Обгортка для зображення */
+.speaker-card__image {
+    width: 100%;
+    aspect-ratio: 1/1;  /* квадрат */
+    overflow: hidden;
+}
+.speaker-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Інформація під фото */
+.speaker-card__info {
+    padding: 1rem 0.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Ім’я */
+.speaker-card__name {
+    font-size: 1.25rem;
+    margin: 0 0 .5rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* Опис */
+.speaker-card__desc {
+    font-size: .9rem;
+    line-height: 1.4;
+    opacity: .8;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.timeline {
+    max-width: 60vw;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+.timeline h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+/* Контейнер кожного пункту */
+.timeline_item {
+    display: flex;
+    align-items: stretch; /* вирівнюємо контент по верхньому краю */
+    margin-bottom: 4rem;
+}
+
+/* Маркіровка (лінія + крапка) */
+.timeline_mark {
+    width: 40px;
+    display: flex;
+    flex-direction: column;      /* лінії в стовпчик */
+    justify-content: space-between;  /* рівномірно між верхом і низом */
+    align-items: center;
+}
+
+/* Сама “палка” */
+.timeline_mark .line {
+    flex: 1;                     /* розтягується, щоб заповнити простір */
+    width: 4px;
+    background: transparent;     /* прозоро в початковому стані */
+    transition: background .1s linear;
+    /* необов’язково: мінімальна висота, щоб не зникала остаточно */
+    min-height: 5vh;
+}
+
+/* Крапка */
+.timeline_mark .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4DF987;         /* постійний колір крапки */
+    margin: 4px 0;
+}
+
+/* Текстова частина */
+.timeline_content {
+    flex: 1;                 /* <-- займе увесь «викінчений» простір поряд із .timeline_mark */
+    padding-left: 10px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /*border: white 1px solid;*/
+}
+.timeline_content .time {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+
+}
+
+
+.timeline_content .title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+.timeline_content .speaker {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.txt-block-h5 {
+    font-family: 'TT Hoves', serif;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 3.5vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: 0;
+}
+
+.txt-block-h6 {
+    font-family: 'TT Hoves', serif;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+    line-height: 1.3;
+    letter-spacing: 0;
+    color: #4DF987;
+}
+
+
+
+/* --- Контакти --- */
+.section-contacts {
+    position: relative;
+    width: 100%;
+    /* висота за бажанням, тут — щоб захопити весь вміст */
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.section-contacts__overlay {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);  /* напівпрозорий чорний оверлей */
+    z-index: 1;
+}
+
+.section-contacts__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    width: 100%;
+}
+
+.contacts__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.contacts__desc {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+}
+
+.contacts__email {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+    color: #4DF987;
+    text-decoration: none;
+}
+
+.contacts__email:hover,
+.contacts__email:focus {
+    text-decoration: underline;
+}
+
+.timeline .txt-block-h2 {
+    color: white;
+    margin-bottom: 50px;
     text-align: center;
 }
