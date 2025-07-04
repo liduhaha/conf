@@ -18,6 +18,18 @@
     font-display: swap;
 }
 
+@media (max-width: 580px) {
+    .txt-block-h1 {
+        font-weight: 400;
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        line-height: clamp(3rem, 8vw, 6rem);
+        letter-spacing: -0.02em;
+    }
+}
+
+.section-3 {
+    height: 100vh;
+}
 
 .txt-bold{
     font-weight: bold;
@@ -46,23 +58,21 @@ html, body {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: url('../public/assets/bckgrnd-1.png') no-repeat center center;
-    /* початковий розмір */
-    background-size: 80% auto;
-    /* запускаємо анімацію */
+    /* зробити висоту 100%, ширина підлаштовується зберігаючи пропорції */
     animation: zoomPan 15s ease-out forwards;
-    /* forwards — щоб затриматися на останньому кадрі */
-    /* one iteration (за замовчуванням 1), без infinite */
+    background-size: cover;
+
 }
 
 /* keyframes: від масштабування 1→1.2 і зрушення background-position */
 @keyframes zoomPan {
     0% {
-        background-size: 70% auto;
+        background-size: auto 100%;
         background-position: center center;
     }
     /* з 80% до 100% тримати 120% (нічого не змінювати) */
     100% {
-        background-size: 90% auto;
+        background-size: auto 120%;
         background-position: center center;
     }
 }
@@ -72,9 +82,9 @@ html, body {
     position: relative; /* щоб контент був над фоном */
     z-index: 1;
     margin: 0;
-    padding-left: 35px;      /* відступ зліва */
-    padding-top: 55px;      /* відступ зліва */
-    padding-bottom: 55px;      /* відступ зліва */
+    padding-left: 2.6vw;      /* відступ зліва */
+    padding-top: 6.11vh;      /* відступ зліва */
+    padding-bottom: 6.11vh;      /* відступ зліва */
     width: 100%;            /* займає всю ширину батьківського блоку */
     color: white;
     display: flex;
@@ -125,6 +135,26 @@ html, body {
     line-height: 1.2;
 }
 
+@media (max-width: 580px) {
+    .luma-checkout--button {
+        font-weight: 500 !important;
+        width: 54vw !important;
+        height: 6vh !important;
+        border-radius: 2px !important;
+        background: #4DF987 !important;
+        color: black !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: background-color .2s ease;
+        font-size: clamp(1rem, 3.9vw, 4rem) !important;
+        /* початковий 72px -> 4.5rem, тому лінійку можна задати як співвідношення */
+        line-height: clamp(2.25rem, 6vw * 1.125, 4.5rem) !important;
+    }
+}
+
+
+
 .luma-checkout--button::after {
     content: '›';
     display: inline-block;
@@ -133,6 +163,8 @@ html, body {
     line-height: 1;
     font-weight: 100 !important;
 }
+
+
 
 .txt-block-h4 {
     font-family: 'TT Hoves', serif;
@@ -153,7 +185,7 @@ html, body {
     flex-direction: column;
     height: auto;
     color: white;
-    padding: 80px;
+    padding: 10%;
     box-sizing: border-box;
 }
 
@@ -402,6 +434,7 @@ ol li:hover::before {
     width: 100%;
     /* висота за бажанням, тут — щоб захопити весь вміст */
     padding: 80px 20px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
