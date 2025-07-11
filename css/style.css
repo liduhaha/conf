@@ -28,7 +28,6 @@
 }
 
 .section-3{
-    height:100dvh;      /* сучасна одиниця, що враховує мобільну адрес-бару */
     height:100vh;       /* fall-back для старих браузерів */
 }
 
@@ -79,12 +78,12 @@ html, body {
 @keyframes zoomPan {
     0% {
         background-size: auto 100%;
-        background-position: right center;
+        background-position: right 110% center;
     }
     /* з 80% до 100% тримати 120% (нічого не змінювати) */
     100% {
         background-size: auto 120%;
-        background-position: right center;
+        background-position: right 110% center;
     }
 }
 
@@ -586,4 +585,22 @@ ol li:hover::before {
     justify-content: center; /* горизонтально */
     align-items: center;     /* вертикально */
     background: white;
+}
+
+.where-block {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    color: white;
+    padding: 0 10% 10%;
+    box-sizing: border-box;
+}
+
+
+.where-block iframe {
+    width: 60vw;
+    height: auto;
 }
