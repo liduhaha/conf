@@ -79,12 +79,12 @@ html, body {
 @keyframes zoomPan {
     0% {
         background-size: auto 80%;
-        background-position: left center;
+        background-position: right center;
     }
     /* з 80% до 100% тримати 120% (нічого не змінювати) */
     100% {
         background-size: auto 100%;
-        background-position: left center;
+        background-position: right center;
     }
 }
 
