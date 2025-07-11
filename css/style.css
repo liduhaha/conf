@@ -601,6 +601,6 @@ ol li:hover::before {
 
 
 .where-block iframe {
-    width: 60vw;
-    height: auto;
+    width: 40vw;
+    height: 40vw;
 }
