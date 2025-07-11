@@ -78,12 +78,12 @@ html, body {
 /* keyframes: від масштабування 1→1.2 і зрушення background-position */
 @keyframes zoomPan {
     0% {
-        background-size: auto 80%;
+        background-size: auto 100%;
         background-position: right center;
     }
     /* з 80% до 100% тримати 120% (нічого не змінювати) */
     100% {
-        background-size: auto 100%;
+        background-size: auto 120%;
         background-position: right center;
     }
 }
@@ -257,7 +257,7 @@ html, body {
     flex-direction: column;
     height: auto;
     color: white;
-    padding: 10%;
+    padding: 5% 10%;
     box-sizing: border-box;
 }
 
