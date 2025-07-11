@@ -27,8 +27,19 @@
     }
 }
 
-.section-3 {
-    height: 100vh;
+.section-3{
+    height:100dvh;      /* сучасна одиниця, що враховує мобільну адрес-бару */
+    height:100vh;       /* fall-back для старих браузерів */
+}
+
+/* 2. Айфрейм повністю заповнює секцію */
+.section-3 iframe{
+    width:100%;
+    height:100%;
+    display:block;          /* без зайвого inline-відступу */
+    border:1px solid #bfcbda88;
+    border-radius:4px;
+    overflow:hidden;        /* сучасна заміна scrolling="no" */
 }
 
 .txt-bold{
